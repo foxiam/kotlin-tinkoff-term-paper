@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Monitoring Account</title>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <br>
+</div>
+{{#message}}
+    {{message}}
+{{/message}}
+<div>
+    <form method="post">
+        <label>
+            <input type="email" name="address" placeholder="Введите почту"/>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <input type="submit" value="Добавить"/>
+        </label>
+    </form>
+    <br>
+    <form action="/delete" method="post">
+        <label>
+            <input type="email" name="address" placeholder="Введите почту"/>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <input type="submit" value="Удалить"/>
+        </label>
+    </form>
+    <br>
+</div>
+<div>Verifiable Emails list</div>
+{{#email}}
+    <div>
+        <span>{{address}}</span>
+    </div>
+{{/email}}
+</body>
+</html>

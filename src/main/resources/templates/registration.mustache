@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Monitoring Account</title>
+</head>
+<body>
+Registration
+{{#message}}
+    {{message}}
+{{/message}}
+<form action="/registration" method="post">
+    <div><label> User Name : <input type="email" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <div><input type="submit" value="Sign Up"/></div>
+</form>
+<br>
+<input onclick="location.href='/login'" type="button" value="Sign In"/>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="foxiam" id="3">
+        <sql>
+            create table user_emails
+            (
+                id bigint not null auto_increment primary key,
+                address varchar(255) not null,
+                user_id bigint          not null,
+                constraint user_emails_address_uindex
+                    unique (address),
+                constraint user_emails_id_uindex
+                    unique (id),
+                constraint user_emails_usr_id_fk
+                    foreign key (user_id) references users (id)
+                        on delete cascade
+            )
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
